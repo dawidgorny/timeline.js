@@ -140,7 +140,9 @@ Timeline.prototype.applyValues = function() {
       propertyAnim.parent.onUpdateCallback(propertyAnim);
     }
 
-    if (this.time >= propertyAnim.endTime && !propertyAnim.hasEnded) {
+    var timeEps = 0.000000000001;
+
+    if (this.time >= propertyAnim.endTime - timeEps && !propertyAnim.hasEnded) {
       propertyAnim.hasEnded = true;
       if (propertyAnim.onEnd) {
         propertyAnim.onEnd();
